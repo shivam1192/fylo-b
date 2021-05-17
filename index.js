@@ -3,7 +3,7 @@ const app = express();
 const data = require("./data.json");
 const client = require("./db.js");
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3020;
 
 app.use(express.json());
 
