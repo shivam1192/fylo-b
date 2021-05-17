@@ -6,6 +6,9 @@ const client = require("./db.js");
 let port = process.env.PORT || 3000;
 
 app.use(express.json());
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin": "*")
+})
 
 app.get("/api/branches/autocomplete",async(req,res)=>{
   try{
