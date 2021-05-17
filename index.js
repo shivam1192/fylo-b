@@ -6,10 +6,15 @@ const client = require("./db.js");
 let port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin": "*")
-})
 
+app.use(function(req, res, next) {
+    res.header('Access-Control-Allow-Credentials', true);
+    res.header('Access-Control-Allow-Origin', req.headers.origin);
+    res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,UPDATE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'X-Requested-With, X-HTTP-Method-Override, Content-Type, Accept');
+    next();
+  });
+  
 app.get("/api/branches/autocomplete",async(req,res)=>{
   try{
     var queryParameter = req.query;
